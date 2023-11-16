@@ -1,0 +1,15 @@
+$breakpoints: (
+  'sm': 375px,
+  'lg': 1440px,
+);
+
+@mixin breakpoint($breakpoint) {
+  $breakpoint-width: map-get($breakpoints, $breakpoint);
+  @if $breakpoint-width {
+    @media screen and (min-width: $breakpoint-width) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
