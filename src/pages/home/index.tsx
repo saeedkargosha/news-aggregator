@@ -1,21 +1,29 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useMemo } from "react";
 import { classNameFactory } from "@/utils/dom";
 import { ApiService } from "@/services/news-api";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
-import { Article, Header } from "@/components";
+import { Article, Header, Searchbar } from "@/components";
 import { Button, Loading } from "@/uikit";
 
 import "./home.scss";
+import { useSearchParams } from "react-router-dom";
 
 const cn = classNameFactory("home-page");
 
 export default function HomePage() {
   const { ref, inView } = useInView();
+  const [searchParams] = useSearchParams();
+
+  const query = useMemo(() => {
+    const q = searchParams.get("query");
+    return q;
+  }, [searchParams]);
+
   const { status, data, isFetchingNextPage, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ["articles"],
+    queryKey: ["articles", query],
     queryFn: async ({ pageParam }) => {
-      const res = await ApiService.getAllFeeds({ page: pageParam });
+      const res = await ApiService.getAllFeeds({ page: pageParam, query });
       return res;
     },
     initialPageParam: 1,
@@ -35,6 +43,7 @@ export default function HomePage() {
     <div className={cn("")}>
       <div className={cn("container")}>
         <Header />
+        <Searchbar />
         {isLoading ? (
           <Loading />
         ) : (
@@ -46,9 +55,16 @@ export default function HomePage() {
                 ))}
               </Fragment>
             ))}
-            <Button ref={ref} onClick={() => fetchNextPage()} disabled={!hasNextPage || isFetchingNextPage}>
-              {isFetchingNextPage ? "Loading more..." : hasNextPage ? "Load Newer" : "Nothing more to load"}
-            </Button>
+
+            {isFetchingNextPage ? (
+              "Loading more..."
+            ) : hasNextPage ? (
+              <Button ref={ref} onClick={() => fetchNextPage()} disabled={!hasNextPage || isFetchingNextPage}>
+                "Load Newer"
+              </Button>
+            ) : (
+              "Nothing more to load"
+            )}
           </ul>
         )}
       </div>

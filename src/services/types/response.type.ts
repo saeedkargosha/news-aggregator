@@ -5,8 +5,3 @@ export interface IResponse<T> {
   totalResults: number;
   articles: T;
 }
-
-export interface IPage {
-  page: number;
-  pageSize?: number;
-}
