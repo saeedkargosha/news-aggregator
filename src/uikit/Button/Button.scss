@@ -1,0 +1,35 @@
+.button {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--rounded-md);
+  border: none;
+  background: var(--color-blue-500);
+  color: var(--color-gray-50);
+  font-family: inherit;
+
+  &:hover {
+    background: var(-color-blue-600);
+  }
+
+  &:active {
+    background: var(-color-blue-700);
+  }
+
+  &:disabled {
+    background: var(--color-gray-400);
+
+    &__content {
+      color: var(--color-gray-700);
+      cursor: not-allowed;
+    }
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &--secondary {
+    background-color: transparent;
+    border: 1px solid var(--color-primary-red3);
+    color: var(--color-foreground3);
+  }
+}
