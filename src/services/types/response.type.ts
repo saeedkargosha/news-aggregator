@@ -1,7 +1,5 @@
 export type ResponseStatus = "ok";
 
-export interface IResponse<T> {
+export interface IResponseStatus {
   status: ResponseStatus;
-  totalResults: number;
-  articles: T;
 }

@@ -1,17 +1,16 @@
 :root {
   --shadow-modal: 0px 2px 8px rgba(0, 0, 0, 0.2);
-  --color-background-modal: #171717;
   --bacground-modal-backdrop: hsl(0 0% 0% / 50%);
 }
 
 .modal {
-  min-width: var(--space-xxxxl);
+  min-width: 500px;
   padding: var(--space-xs) var(--space-md) var(--space-md) var(--space-md);
   border: none;
   border-radius: var(--rounded-lg);
   position: relative;
   box-shadow: var(--shadow-modal);
-  background-color: var(--color-background-modal);
+  background-color: white;
 
   &::backdrop {
     background: var(--bacground-modal-backdrop);

@@ -8,12 +8,18 @@ import { Button, Loading } from "@/uikit";
 
 import "./home.scss";
 import { useSearchParams } from "react-router-dom";
+import { authorIdsSelector, useAuthorsStore } from "@/store/authors.store";
+import { sourceIdsSelector, useSourcesStore } from "@/store/sources.store";
+import { categoriesIdsSelector, useCategoriesStore } from "@/store/categories.store";
 
 const cn = classNameFactory("home-page");
 
 export default function HomePage() {
   const { ref, inView } = useInView();
   const [searchParams] = useSearchParams();
+  const selectedAuthorIds = useAuthorsStore(authorIdsSelector);
+  const selectedSourcesIds = useSourcesStore(sourceIdsSelector);
+  const selectedCategoriesIds = useCategoriesStore(categoriesIdsSelector);
 
   const query = useMemo(() => {
     const q = searchParams.get("query");
@@ -21,9 +27,15 @@ export default function HomePage() {
   }, [searchParams]);
 
   const { status, data, isFetchingNextPage, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ["articles", query],
+    queryKey: ["articles", query, selectedAuthorIds, selectedSourcesIds, selectedCategoriesIds],
     queryFn: async ({ pageParam }) => {
-      const res = await ApiService.getAllFeeds({ page: pageParam, query });
+      const res = await ApiService.getFeeds({
+        page: pageParam,
+        query,
+        authors: selectedAuthorIds,
+        sources: selectedSourcesIds,
+        categories: selectedCategoriesIds,
+      });
       return res;
     },
     initialPageParam: 1,

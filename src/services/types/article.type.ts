@@ -1,3 +1,4 @@
+import { IResponseStatus } from "./response.type";
 import { ISource } from "./source.type";
 
 export interface IArticle {
@@ -9,4 +10,9 @@ export interface IArticle {
   urlToImage: string;
   publishedAt: string;
   content: string;
+}
+
+export interface IArticleResponse extends IResponseStatus {
+  totalResults: number;
+  articles: IArticle[];
 }

@@ -22,9 +22,6 @@
   &__item:hover {
     color: var(--color-slate-800);
     background-color: var(--color-gray-200);
-    & {
-      color: var(--color-gray-700);
-    }
   }
 
   &__item--active {
@@ -39,5 +36,15 @@
   &__item-title {
     font-size: var(--text-base);
     color: var(--color-gray-600);
+  }
+
+  &__folder {
+    padding: var(--space-base);
+    cursor: pointer;
+  }
+
+  &__folder-title {
+    color: var(--color-slate-800);
+    font-size: var(--text-sm);
   }
 }
