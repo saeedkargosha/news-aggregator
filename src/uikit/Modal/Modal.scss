@@ -1,0 +1,45 @@
+:root {
+  --shadow-modal: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  --color-background-modal: #171717;
+  --bacground-modal-backdrop: hsl(0 0% 0% / 50%);
+}
+
+.modal {
+  min-width: var(--space-xxxxl);
+  padding: var(--space-xs) var(--space-md) var(--space-md) var(--space-md);
+  border: none;
+  border-radius: var(--rounded-lg);
+  position: relative;
+  box-shadow: var(--shadow-modal);
+  background-color: var(--color-background-modal);
+
+  &::backdrop {
+    background: var(--bacground-modal-backdrop);
+  }
+
+  &__header {
+    display: flex;
+    margin-bottom: var(--space-md);
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-foreground3);
+  }
+
+  &__button-close {
+    font-size: var(--text-sm);
+    background: transparent;
+    color: var(--color-foreground3);
+    border: none;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: var(--text-md);
+  }
+
+  footer {
+    margin-top: var(--space-md);
+    display: flex;
+    justify-content: flex-end;
+  }
+}
