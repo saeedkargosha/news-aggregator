@@ -1,0 +1,12 @@
+.alert-dialog {
+  &__description {
+    color: var(--gray-50);
+  }
+
+  &__options {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+  }
+}
