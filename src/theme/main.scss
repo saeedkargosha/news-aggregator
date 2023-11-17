@@ -1,14 +1,15 @@
-@import './reset';
-@import './colors';
-@import './space';
-@import './typography';
-@import './radius';
-@import './shadow';
+@import "./reset";
+@import "./colors";
+@import "./space";
+@import "./typography";
+@import "./radius";
+@import "./shadow";
+@import "./animation";
 
 html,
 body,
 #root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", sans-serif;
   height: 100%;
   font-size: 16px;
 }
@@ -22,6 +23,7 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 main {
