@@ -1,0 +1,19 @@
+.home-page {
+  padding-top: var(--space-xl);
+  overflow-y: scroll;
+  flex: 1;
+
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    width: 75%;
+  }
+
+  &__articles {
+    // display: flex;
+    // flex-direction: column;
+    // gap: 20px;
+  }
+}

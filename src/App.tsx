@@ -1,8 +1,16 @@
-import Router from '@/pages/router'
+import Router from "@/pages/router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-// You can add prividers here like: ThemeProvider
+const queryClient = new QueryClient();
+
 function App() {
-  return <Router />
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router />
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;
