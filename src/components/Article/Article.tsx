@@ -14,13 +14,15 @@ interface ArticleProps {
 export const Article: FC<ArticleProps> = ({ data }) => {
   return (
     <li>
-      <div className={cn("")}>
-        <img className={cn("cover")} src={data.urlToImage} />
-        <div>
-          <p className={cn("title")}>{data.title}</p>
-          <p className={cn("description")}>{data.content ? parse(data.content) : ""}</p>
+      <a href={data.url} target="_blank">
+        <div className={cn("")}>
+          <img className={cn("cover")} src={data.urlToImage} />
+          <div>
+            <p className={cn("title")}>{data.title}</p>
+            <p className={cn("description")}>{data.content ? parse(data.content) : ""}</p>
+          </div>
         </div>
-      </div>
+      </a>
     </li>
   );
 };

@@ -33,7 +33,7 @@ export default function HomePage() {
             {data?.pages.map((page, idx) => (
               <Fragment key={idx}>
                 {page.articles?.map(article => (
-                  <Article key={article.title} data={article} />
+                  <Article key={article.url} data={article} />
                 ))}
               </Fragment>
             ))}
