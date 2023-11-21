@@ -3,7 +3,7 @@ import { classNameFactory } from "@/utils/dom";
 import { Searchbar } from "..";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
-import { IconButton, Modal } from "@/uikit";
+import { DatePicker, IconButton, Modal } from "@/uikit";
 import { useDisclosure } from "@/hooks/useDisclosure";
 import Select, { MultiValue } from "react-select";
 import { ApiService } from "@/services/news-api";
@@ -12,15 +12,19 @@ import { ICategory } from "@/services/types/category.type";
 import configs from "@/configs";
 import { useQuery } from "@tanstack/react-query";
 import { useFilterSearchParams } from "@/hooks/useFilterSearchParams";
+import { format, parse } from "date-fns";
 
 import "./Filter.scss";
 
 const cn = classNameFactory("filter");
+const DATE_FOMRAT = "yyyy-MM-dd";
 
 export const Filter = () => {
   const modal = useDisclosure();
-  const [sources, setSources] = useFilterSearchParams("sources");
-  const [categories, setCategories] = useFilterSearchParams("categories");
+  const [sources, setSources] = useFilterSearchParams(configs.filterParams.sources);
+  const [categories, setCategories] = useFilterSearchParams(configs.filterParams.categories);
+  const [date, setDate] = useFilterSearchParams(configs.filterParams.from);
+
   const { data } = useQuery({
     queryKey: ["sources"],
     queryFn: async () => {
@@ -56,6 +60,12 @@ export const Filter = () => {
     const catgoryIds = categories.map(category => category.value).join(",");
     setCategories(catgoryIds);
   };
+  const handleSelectDate = (date: Date) => {
+    const formattedDate = format(date, DATE_FOMRAT);
+    setDate(formattedDate);
+  };
+
+  const parsedDate = date ? parse(date, DATE_FOMRAT, new Date()) : null;
 
   return (
     <div className={cn("")}>
@@ -64,24 +74,27 @@ export const Filter = () => {
         <FontAwesomeIcon icon={faFilter} className={cn("filter-icon")} />
       </IconButton>
       <Modal title="Filter" isOpen={modal.isOpen} onClose={modal.onClose}>
-        <Select
-          options={data}
-          menuPosition="fixed"
-          placeholder="Sources"
-          getOptionLabel={option => option.name}
-          getOptionValue={option => option.id}
-          isMulti
-          defaultValue={selectedSources}
-          onChange={handleSelectSource}
-        />
-        <Select
-          options={configs.categories}
-          defaultValue={selectedCategories}
-          placeholder="Categories"
-          menuPosition="fixed"
-          isMulti
-          onChange={handleSelectCategories}
-        />
+        <div className="modal-filter">
+          <Select
+            options={data}
+            menuPosition="fixed"
+            placeholder="Sources"
+            getOptionLabel={option => option.name}
+            getOptionValue={option => option.id}
+            isMulti
+            defaultValue={selectedSources}
+            onChange={handleSelectSource}
+          />
+          <Select
+            options={configs.categories}
+            defaultValue={selectedCategories}
+            placeholder="Categories"
+            menuPosition="fixed"
+            isMulti
+            onChange={handleSelectCategories}
+          />
+          <DatePicker placeholderText="Date" selected={parsedDate} onChange={handleSelectDate} />
+        </div>
       </Modal>
     </div>
   );

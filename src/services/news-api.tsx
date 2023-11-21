@@ -11,7 +11,7 @@ const newsAxiosInstance = axios.create({
 
 setInterceptors(newsAxiosInstance);
 
-const getFeeds = ({ page, pageSize = 20, query, authors, sources, categories }: IFeedParams) => {
+const getFeeds = ({ page, pageSize = 20, query, authors, sources, categories, from }: IFeedParams) => {
   const authorsParam = authors.length === 0 ? undefined : authors;
   const categoriesParam = categories.length === 0 ? undefined : categories;
   const sourcesParam = sources.length === 0 ? configs.sources.map(source => source.id).join(",") : sources;
@@ -25,6 +25,7 @@ const getFeeds = ({ page, pageSize = 20, query, authors, sources, categories }: 
         q: query,
         authors: authorsParam,
         categories: categoriesParam,
+        from,
       },
     })
     .then(res => res.data);

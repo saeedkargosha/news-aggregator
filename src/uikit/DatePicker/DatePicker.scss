@@ -1,0 +1,17 @@
+.date-picker {
+  padding: var(--space-xs);
+  border: none;
+  border: 1px solid var(--color-gray-200);
+  height: 48px;
+  border-radius: var(--rounded);
+  background: transparent;
+  color: var(--color-gray-400);
+  font-family: inherit;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-gray-400);
+    color: var(--color-gray-800);
+  }
+}

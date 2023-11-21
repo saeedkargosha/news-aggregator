@@ -11,4 +11,5 @@ export interface IFeedParams extends IPage, ISearch {
   authors: string;
   sources: string;
   categories: string;
+  from?: string;
 }

@@ -1,3 +1,4 @@
+import configs from "@/configs";
 import { useFilterSearchParams } from "@/hooks/useFilterSearchParams";
 import { ApiService } from "@/services/news-api";
 import { authorIdsSelector, useAuthorsStore } from "@/store/authors.store";
@@ -7,16 +8,26 @@ import { mergeStrings } from "@/utils/merge";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 export const useFeeds = () => {
-  const [query] = useFilterSearchParams("query");
-  const [categories] = useFilterSearchParams("categories");
-  const [sources] = useFilterSearchParams("sources");
+  const [query] = useFilterSearchParams(configs.filterParams.query);
+  const [categories] = useFilterSearchParams(configs.filterParams.categories);
+  const [sources] = useFilterSearchParams(configs.filterParams.sources);
+  const [from] = useFilterSearchParams(configs.filterParams.from);
 
   const selectedAuthorIds = useAuthorsStore(authorIdsSelector);
   const selectedSourcesIds = useSourcesStore(sourceIdsSelector);
   const selectedCategoriesIds = useCategoriesStore(categoriesIdsSelector);
 
   return useInfiniteQuery({
-    queryKey: ["articles", query, selectedAuthorIds, selectedSourcesIds, selectedCategoriesIds, sources, categories],
+    queryKey: [
+      "articles",
+      query,
+      selectedAuthorIds,
+      selectedSourcesIds,
+      selectedCategoriesIds,
+      sources,
+      categories,
+      from,
+    ],
     queryFn: async ({ pageParam }) => {
       const res = await ApiService.getFeeds({
         page: pageParam,
@@ -24,6 +35,7 @@ export const useFeeds = () => {
         authors: selectedAuthorIds,
         sources: mergeStrings(selectedSourcesIds, sources),
         categories: mergeStrings(selectedCategoriesIds, categories),
+        from,
       });
       return res;
     },
