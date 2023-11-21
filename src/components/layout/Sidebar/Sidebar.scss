@@ -1,9 +1,11 @@
+@import "@/theme/breakpoint";
+
 .sidebar {
-  width: 320px;
+  width: 240px;
   padding: var(--space-base);
   background-color: var(--color-gray-100);
 
-  &__items {
+  &__menu {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
@@ -28,23 +30,32 @@
     background-color: var(--color-gray-200);
   }
 
-  &__item-icon {
-    font-size: var(--text-base);
-    color: var(--color-gray-400);
-  }
-
-  &__item-title {
+  &__icon {
     font-size: var(--text-base);
     color: var(--color-gray-600);
   }
 
-  &__folder {
+  &__name {
+    font-size: var(--text-base);
+    color: var(--color-gray-600);
+  }
+
+  &__setting a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
     padding: var(--space-base);
     cursor: pointer;
   }
+}
 
-  &__folder-title {
-    color: var(--color-slate-800);
-    font-size: var(--text-sm);
+@include breakpoint-down(lg) {
+  .sidebar {
+    width: 80px;
+
+    &__name {
+      display: none;
+    }
   }
 }

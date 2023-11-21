@@ -16,14 +16,16 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
   const id = useId();
   return (
     <div className={cn("", { full: fullWidth })}>
-      <label htmlFor={id} className={cn("label")}>
-        {label}
-        {required && (
-          <span className={cn("star")} aria-hidden="true">
-            *
-          </span>
-        )}
-      </label>
+      {label && (
+        <label htmlFor={id} className={cn("label")}>
+          {label}
+          {required && (
+            <span className={cn("star")} aria-hidden="true">
+              *
+            </span>
+          )}
+        </label>
+      )}
       <input aria-invalid={!!error} id={id} className={cn("input")} {...restProps} required={required} ref={ref} />
       <p className={cn("error-message")} role="alert">
         {error}

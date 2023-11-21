@@ -5,3 +5,4 @@ export * from "./Divider";
 export * from "./Loading";
 export * from "./Modal";
 export * from "./TextField";
+export * from "./IconButton";

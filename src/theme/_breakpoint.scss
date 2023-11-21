@@ -1,15 +1,30 @@
 $breakpoints: (
-  'sm': 375px,
-  'lg': 1440px,
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+  xxxl: 1800px,
+  xxxxl: 2140px,
 );
 
-@mixin breakpoint($breakpoint) {
-  $breakpoint-width: map-get($breakpoints, $breakpoint);
-  @if $breakpoint-width {
-    @media screen and (min-width: $breakpoint-width) {
-      @content;
-    }
-  } @else {
+@function breakpoint-max-width($size) {
+  @if not map-has-key($breakpoints, $size) {
+    @error '#{$size} is not a valid breakpoint';
+  }
+
+  $width: map-get($breakpoints, $size) - 1px;
+
+  @if $width <= 0 {
+    @error '#{$size} have a max width of zero or negative';
+  }
+
+  @return $width;
+}
+
+@mixin breakpoint-down($size) {
+  @media (max-width: breakpoint-max-width($size)) {
     @content;
   }
 }

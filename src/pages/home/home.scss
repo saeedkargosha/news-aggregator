@@ -1,19 +1,28 @@
+@import "@/theme/breakpoint";
+
 .home-page {
   padding-top: var(--space-xl);
   overflow-y: scroll;
   flex: 1;
 
+  &__articles {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__container {
     margin-left: auto;
     margin-right: auto;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: var(--space-5xl);
+    padding-right: var(--space-5xl);
     width: 75%;
   }
 
-  &__articles {
-    // display: flex;
-    // flex-direction: column;
-    // gap: 20px;
+  @include breakpoint-down(xl) {
+    &__container {
+      width: 100%;
+      padding-left: var(--space-base);
+      padding-right: var(--space-base);
+    }
   }
 }

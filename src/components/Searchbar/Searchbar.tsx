@@ -1,21 +1,17 @@
 import { TextField } from "@/uikit";
 import { classNameFactory } from "@/utils/dom";
-import { useSearchParams } from "react-router-dom";
+import { useFilterSearchParams } from "@/hooks/useFilterSearchParams";
 import "./Searchbar.scss";
-import { useDebounce } from "@/hooks/useDebounce";
 
-const cn = classNameFactory("search-bar");
+const cn = classNameFactory("searchbar");
 
 export const Searchbar = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useFilterSearchParams("query");
 
-  const handleChange = useDebounce((event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value;
-    if (query) return setSearchParams({ query });
-    setSearchParams(query);
-  }, 300);
-
-  const query = searchParams.get("query") ?? undefined;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setQuery(value);
+  };
 
   return (
     <div className={cn("")}>

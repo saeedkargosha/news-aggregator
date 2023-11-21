@@ -1,0 +1,12 @@
+@import "@/theme/breakpoint";
+
+.root-layout {
+  display: flex;
+  height: 100vh;
+}
+
+@include breakpoint-down(lg) {
+  .root-layout {
+    // flex-direction: column;
+  }
+}

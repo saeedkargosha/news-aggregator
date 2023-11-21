@@ -1,0 +1,13 @@
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-gray-400);
+  border-radius: var(--rounded);
+  height: 48px;
+  padding-left: var(--space-base);
+  padding-right: var(--space-base);
+  background: transparent;
+  outline: 0;
+  cursor: pointer;
+}

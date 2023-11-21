@@ -86,7 +86,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -102,6 +102,7 @@ input {
 
 a {
   text-decoration: none;
+  color: currentColor;
 }
 
 a:visited {
