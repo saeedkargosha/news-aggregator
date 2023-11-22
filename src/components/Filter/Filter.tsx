@@ -70,7 +70,7 @@ export const Filter = () => {
   return (
     <div className={cn("")}>
       <Searchbar />
-      <IconButton onClick={modal.onOpen}>
+      <IconButton onClick={modal.onOpen} data-testid="btn-filter">
         <FontAwesomeIcon icon={faFilter} className={cn("filter-icon")} />
       </IconButton>
       <Modal title="Filter" isOpen={modal.isOpen} onClose={modal.onClose}>
@@ -84,6 +84,7 @@ export const Filter = () => {
             isMulti
             defaultValue={selectedSources}
             onChange={handleSelectSource}
+            id="filter-sources"
           />
           <Select
             options={configs.categories}

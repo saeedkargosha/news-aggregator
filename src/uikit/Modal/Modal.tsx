@@ -41,7 +41,7 @@ export function Modal({ children, onClose, isOpen, title, className: classNamePr
         <h2 id={labelId} className={cn("title")}>
           {title}
         </h2>
-        <Button aria-label="close the modal" className={cn("button-close")} onClick={onClose}>
+        <Button data-testid="modal-close" aria-label="close the modal" className={cn("button-close")} onClick={onClose}>
           {"X"}
         </Button>
       </header>

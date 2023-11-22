@@ -22,14 +22,14 @@ export default function HomePage() {
   const isLoading = status === "pending";
 
   return (
-    <div className={cn("")}>
+    <div className={cn("")} data-testid="home">
       <div className={cn("container")}>
         <Header />
         <Filter />
         {isLoading ? (
           <Loading />
         ) : (
-          <ul className={cn("articles")}>
+          <ul className={cn("articles")} data-testid="articles">
             {data?.pages.map((page, idx) => (
               <Fragment key={idx}>
                 {page.articles?.map(article => (

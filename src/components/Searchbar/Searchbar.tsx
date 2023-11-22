@@ -16,7 +16,7 @@ export const Searchbar = () => {
 
   return (
     <div className={cn("")}>
-      <TextField defaultValue={query} placeholder="search..." onChange={handleChange} />
+      <TextField data-testid="searchbar" defaultValue={query} placeholder="search..." onChange={handleChange} />
     </div>
   );
 };

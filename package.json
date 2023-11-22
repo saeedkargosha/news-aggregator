@@ -40,19 +40,28 @@
     "@storybook/react-vite": "7.5.3",
     "@storybook/testing-library": "0.2.2",
     "@tanstack/eslint-plugin-query": "^5.8.4",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/react-hooks": "v7.0.2",
+    "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.2.15",
     "@types/react-datepicker": "^4.19.3",
     "@types/react-dom": "^18.2.7",
+    "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "cypress": "^13.6.0",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-storybook": "^0.6.15",
+    "jsdom": "^22.1.0",
     "sass": "^1.69.5",
     "storybook": "7.5.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
-  }
+    "vite": "^4.4.5",
+    "vitest": "^0.34.6"
+  },
+  "packageManager": "yarn@4.0.2"
 }
