@@ -1,27 +1,79 @@
-# React + TypeScript + Vite
+# News Aggregator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Content
 
-Currently, two official plugins are available:
+- [How to run](#how-to-run)
+- [How to test](#how-to-test)
+- [Built with](#built-with)
+- [Features](#features)
+- [Styles Documentation](#styles-documentation)
+- [UIKit Documentation](#uikit-documentation)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to run
 
-## Expanding the ESLint configuration
+Clone the project or download it as a zip file, you can run `yarn install` to install dependencies. After that, you can run:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+````bash
+# npm
+yarn dev
 
-- Configure the top-level `parserOptions` property like this:
+OR
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+docker-compose up
+
+And You can see the client application running in your browser by going to http://localhost:3000.
+
+---
+
+## How to test
+
+- Running test
+
+```bash
+yarn test
+````
+
+- Running End-to-End (E2E) Tests
+
+```bash
+yarn cy:open
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Built with
+
+- [React.js](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org)
+- [Vite](https://vitejs.dev)
+- [SASS](https://sass-lang.com)
+- [Cypress](https://www.cypress.io/)
+- [Storybook](https://storybook.js.org)
+- [React Query](https://tanstack.com/query/latest)
+- [React Query](https://tanstack.com/query/latest)
+- [Zustand](https://github.com/pmndrs/zustand)
+- [Infinite Scroll](https://github.com/thebuilder/react-intersection-observer)
+
+## Features
+
+✅ Unit tests
+
+✅ End-to-End
+
+✅ Documentation
+
+✅ Data Storage
+
+## UIKit Documentation
+
+### Overview:
+
+The uikit directory is a collection of reusable UI components designed to provide consistency and modularity across the application. These components are meant to standardize the look and behavior of common UI elements and reduce redundancy in code.
+
+### Viewing Components:
+
+To visualize the components and understand their props, you can use Storybook, a tool that showcases the components in various states and provides an interactive playground for them.
+
+Run the following command to launch Storybook:
+
+```bash
+yarn storybook
+```
