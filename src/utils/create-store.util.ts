@@ -4,6 +4,10 @@ import { devtools, persist } from "zustand/middleware";
 import type { StateCreator, StoreApi, StateListener, StateSelector, EqualityChecker } from "zustand";
 import type { PersistOptions } from "zustand/middleware";
 
+interface ISliceSubscription {
+  unsubscribe: () => void;
+}
+
 interface IStoreApi<TState extends object> extends StoreApi<TState> {
   /**
    * It subscribes to the store, and calls the listener with the selected state slice whenever the
@@ -18,7 +22,7 @@ interface IStoreApi<TState extends object> extends StoreApi<TState> {
    */
   sliceSubscribe: <TSlice>(
     selector: StateSelector<TState, TSlice>,
-    listener: StateListener<TSlice>,
+    listener: StateListener<TSlice | undefined>,
     options?: { equalityFn?: EqualityChecker<TSlice>; fireImmediately?: boolean }
   ) => ISliceSubscription;
 }
@@ -34,7 +38,7 @@ interface IPersistOptions<TState> extends PersistOptions<TState, Partial<TState>
 export class Store<TState extends object> {
   private createState: StateCreator<TState, any, any, TState>;
 
-  constructor(initial) {
+  constructor(initial: any) {
     this.createState = () => initial;
     return this;
   }

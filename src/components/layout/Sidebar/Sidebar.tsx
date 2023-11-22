@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition, faCompass } from "@fortawesome/free-regular-svg-icons";
-import { faBars, faGear } from "@fortawesome/free-solid-svg-icons";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { FC } from "react";
 import { classNameFactory } from "@/utils/dom";
 import "./Sidebar.scss";

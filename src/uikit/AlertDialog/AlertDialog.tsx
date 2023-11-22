@@ -19,9 +19,7 @@ export function AlertDialog({ description, onSubmit, onClose, ...props }: AlertD
       </p>
       <ul className={cn("options")}>
         <li>
-          <Button varinat="secondary" onClick={onClose}>
-            No
-          </Button>
+          <Button onClick={onClose}>No</Button>
         </li>
         <li>
           <Button data-testid="submit" onClick={onSubmit}>
